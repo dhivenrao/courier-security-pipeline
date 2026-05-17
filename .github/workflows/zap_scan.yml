@@ -13,25 +13,22 @@ jobs:
       - name: Prepare Report Folder
         shell: powershell
         run: |
-          if (!(Test-Path "C:\zap-reports")) {
-            New-Item -ItemType Directory -Path "C:\zap-reports"
-          }
+          New-Item -ItemType Directory -Force -Path "C:\zap-reports"
 
       - name: Run OWASP ZAP Docker Scan
         shell: powershell
         continue-on-error: true
         run: |
-          docker run --rm `
-            -v "C:\zap-reports:/zap/wrk/:rw" `
-            ghcr.io/zaproxy/zaproxy:stable `
-            zap-baseline.py `
-            -t http://host.docker.internal:8080/courier/ `
-            -r zap-report.html `
-            -I
+          docker run --rm -v "C:\zap-reports:/zap/wrk/:rw" ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://host.docker.internal:8080/courier/ -r zap-report.html -I
+
+      - name: List Report Folder
+        shell: powershell
+        run: |
+          Get-ChildItem "C:\zap-reports"
 
       - name: Upload ZAP Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: zap-security-report
-          path: C:\zap-reports\zap-report.html
+          path: C:/zap-reports/zap-report.html
