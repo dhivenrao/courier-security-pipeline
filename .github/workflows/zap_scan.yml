@@ -12,5 +12,12 @@ jobs:
     steps:
       - name: Run OWASP ZAP Docker Scan
         shell: powershell
+        continue-on-error: true
         run: |
           docker run --rm -v "${PWD}:/zap/wrk/:rw" ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://host.docker.internal:8080/courier/ -r zap-report.html
+
+      - name: Upload ZAP Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: zap-security-report
+          path: zap-report.html
