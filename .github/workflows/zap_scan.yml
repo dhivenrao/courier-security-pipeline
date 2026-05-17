@@ -10,9 +10,6 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
       - name: Prepare Report Folder
         shell: powershell
         run: |
@@ -31,11 +28,6 @@ jobs:
             -t http://host.docker.internal:8080/courier/ `
             -r zap-report.html `
             -I
-
-      - name: Check Report Folder
-        shell: powershell
-        run: |
-          dir C:\zap-reports
 
       - name: Upload ZAP Report
         if: always()
