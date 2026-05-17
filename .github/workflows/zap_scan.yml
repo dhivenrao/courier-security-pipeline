@@ -11,20 +11,15 @@ jobs:
 
     steps:
       - name: Prepare Report Folder
-        shell: powershell
+        shell: powershell -ExecutionPolicy Bypass -Command "{0}"
         run: |
           New-Item -ItemType Directory -Force -Path "C:\zap-reports"
 
       - name: Run OWASP ZAP Docker Scan
-        shell: powershell
+        shell: powershell -ExecutionPolicy Bypass -Command "{0}"
         continue-on-error: true
         run: |
           docker run --rm -v "C:\zap-reports:/zap/wrk/:rw" ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://host.docker.internal:8080/courier/ -r zap-report.html -I
-
-      - name: List Report Folder
-        shell: powershell
-        run: |
-          Get-ChildItem "C:\zap-reports"
 
       - name: Upload ZAP Report
         if: always()
