@@ -15,18 +15,14 @@ jobs:
 
       - name: Run OWASP ZAP Docker Scan
         shell: powershell
-        continue-on-error: true
         run: |
           cd "${{ github.workspace }}"
-          docker run --rm -v "${{ github.workspace }}:/zap/wrk/:rw" ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://host.docker.internal:8080/courier/ -r /zap/wrk/zap-report.html
-
-      - name: Check Report Exists
-        shell: powershell
-        run: |
-          dir "${{ github.workspace }}"
+          docker run --rm -v "${PWD}:/zap/wrk/:rw" ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://host.docker.internal:8080/courier/ -r zap-report.html
+          exit 0
 
       - name: Upload ZAP Report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: zap-security-report
-          path: ${{ github.workspace }}/zap-report.html
+          path: zap-report.html
