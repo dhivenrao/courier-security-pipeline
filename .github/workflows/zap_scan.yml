@@ -16,9 +16,12 @@ jobs:
       - name: Run OWASP ZAP Docker Scan
         shell: powershell
         run: |
-          cd "${{ github.workspace }}"
-          docker run --rm -v "${PWD}:/zap/wrk/:rw" ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://host.docker.internal:8080/courier/ -r zap-report.html
-          exit 0
+          docker run --rm `
+          -v "${{ github.workspace }}:/zap/wrk/:rw" `
+          ghcr.io/zaproxy/zaproxy:stable `
+          zap-baseline.py `
+          -t http://host.docker.internal:8080/courier/ `
+          -r zap-report.html || exit 0
 
       - name: Upload ZAP Report
         if: always()
