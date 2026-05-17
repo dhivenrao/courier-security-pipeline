@@ -10,11 +10,20 @@ jobs:
     runs-on: self-hosted
 
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
       - name: Run OWASP ZAP Docker Scan
         shell: powershell
         continue-on-error: true
         run: |
-          docker run --rm -v "${{ github.workspace }}:/zap/wrk/:rw" ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://host.docker.internal:8080/courier/ -r zap-report.html
+          cd "${{ github.workspace }}"
+          docker run --rm -v "${{ github.workspace }}:/zap/wrk/:rw" ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://host.docker.internal:8080/courier/ -r /zap/wrk/zap-report.html
+
+      - name: Check Report Exists
+        shell: powershell
+        run: |
+          dir "${{ github.workspace }}"
 
       - name: Upload ZAP Report
         uses: actions/upload-artifact@v4
