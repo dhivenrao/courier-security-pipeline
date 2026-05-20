@@ -2,6 +2,13 @@
 <html lang="en">
 <?php include 'pages/head.php'; ?>
 <?php include 'auth.php'; ?>
+<?php
+require_once 'includes/csrf.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    verify_csrf_token();
+}
+?>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="200">
 
@@ -88,6 +95,9 @@
 
 
                     <form action="#" class="p-5 bg-white" method="post">
+                        <input type="hidden"
+                        name="csrf_token"
+                        value="<?php echo generate_csrf_token(); ?>">
 
 
                         <h4>Sending Details</h4>
