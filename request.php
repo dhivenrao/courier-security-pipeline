@@ -93,7 +93,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="col-md-12 mb-5">
 
 
-
                     <form action="#" class="p-5 bg-white" method="post">
                         <input type="hidden"
                         name="csrf_token"
