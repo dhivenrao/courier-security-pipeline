@@ -2,14 +2,27 @@
 <html lang="en">
 
 <?php include 'pages/head.php'; ?>
+<?php
+require_once '../includes/csrf.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    verify_csrf_token();
+}
+?>
 
 <body>
+
 
   <div id="auth">
     <div class="bg-img">
       <div class="row h-100 mt-5">
         <div class="card">
           <form method="post">
+
+          <input type="hidden"
+          name="csrf_token"
+          value="<?php echo generate_csrf_token(); ?>">
+
             <h2 class="title"> Sign In</h2>
 
             <div class="email-login">
@@ -18,7 +31,7 @@
               <label for="psw"><b>Password</b></label>
               <input type="password" name="password" id="password" placeholder="Enter Password" required>
             </div>
-            <button type="button" onclick="login(this.form)" class="cta-btn">Sign In</button>
+            <button type="submit" class="cta-btn">Sign In</button>
             Don't have an account? <a href="register.php">Sign Up</a>
             or go back to the <a href="../index.php">Home</a>
           </form>
