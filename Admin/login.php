@@ -5,7 +5,6 @@
 
 <body>
 
-
   <div id="auth">
     <div class="bg-img">
       <div class="row h-100 mt-5">
