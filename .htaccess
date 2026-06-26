@@ -1,2 +1,2 @@
-ErrorDocument 500 "Application Error: An unexpected error occurred. Please try again later."
-ErrorDocument 404 "Page not found."
+ErrorDocument 500 "Application Error"
+ErrorDocument 404 "Page not found"
