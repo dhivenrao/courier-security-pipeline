@@ -6,7 +6,7 @@
     <title>Dashboard - Royal Express</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" integrity="sha384-lFklHhKsAMNpJRqeO7UqxcSuT+jDG8zGb2M4JbMT681mjOU+lHLByURM71sevEm9" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
 
     <link rel="stylesheet" href="assets/vendors/iconly/bold.css">
