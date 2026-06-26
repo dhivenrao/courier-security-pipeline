@@ -9,13 +9,13 @@ jobs:
 
     steps:
       - name: Prepare Report Folder
-        shell: powershell
+        shell: powershell -ExecutionPolicy Bypass -Command "{0}"
         run: |
           New-Item -ItemType Directory -Force -Path "C:\zap-reports"
           Remove-Item "C:\zap-reports\zap-report.html" -ErrorAction SilentlyContinue
 
       - name: Run OWASP ZAP Docker Scan
-        shell: powershell
+        shell: powershell -ExecutionPolicy Bypass -Command "{0}"
         continue-on-error: true
         run: |
           docker run --rm `
@@ -29,7 +29,7 @@ jobs:
 
       - name: Check Report Folder
         if: always()
-        shell: powershell
+        shell: powershell -ExecutionPolicy Bypass -Command "{0}"
         run: |
           dir C:\zap-reports
 
