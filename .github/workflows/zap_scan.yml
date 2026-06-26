@@ -17,13 +17,13 @@ jobs:
       - name: Test Target Access
         shell: powershell -ExecutionPolicy Bypass -Command "{0}"
         run: |
-          docker run --rm curlimages/curl:latest http://host.docker.internal:8080/courier/
+          & "C:\Program Files\Docker\Docker\resources\bin\docker.exe" run --rm curlimages/curl:latest http://host.docker.internal:8080/courier/
 
       - name: Run OWASP ZAP Docker Scan
         shell: powershell -ExecutionPolicy Bypass -Command "{0}"
         continue-on-error: true
         run: |
-          docker run --rm `
+          & "C:\Program Files\Docker\Docker\resources\bin\docker.exe" run --rm `
             -v "C:\zap-reports:/zap/wrk:rw" `
             ghcr.io/zaproxy/zaproxy:stable `
             zap-baseline.py `
