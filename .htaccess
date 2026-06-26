@@ -1,2 +1,2 @@
-ErrorDocument 404 /courier/error500.html
-ErrorDocument 500 /courier/error500.html
+ErrorDocument 500 "Application Error: An unexpected error occurred. Please try again later."
+ErrorDocument 404 "Page not found."
