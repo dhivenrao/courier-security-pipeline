@@ -14,6 +14,11 @@ jobs:
           New-Item -ItemType Directory -Force -Path "C:\zap-reports"
           Remove-Item "C:\zap-reports\zap-report.html" -ErrorAction SilentlyContinue
 
+      - name: Test Target Access
+        shell: powershell -ExecutionPolicy Bypass -Command "{0}"
+        run: |
+          docker run --rm curlimages/curl:latest http://host.docker.internal:8080/courier/
+
       - name: Run OWASP ZAP Docker Scan
         shell: powershell -ExecutionPolicy Bypass -Command "{0}"
         continue-on-error: true
@@ -26,6 +31,8 @@ jobs:
             -r zap-report.html `
             -I `
             -d
+
+          echo "Docker exit code: $LASTEXITCODE"
 
       - name: Check Report Folder
         if: always()
