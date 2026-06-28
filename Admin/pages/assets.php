@@ -10,10 +10,11 @@
     ></script>
 
 <!-- Simple table -->
-<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" 
+    integrity="sha384-CinX6s1UC1GpaQwL9eKshF7JhtC8H2xchDD0dWqlCgZ8t+GCCcjluxCgmsbVpdEh" crossorigin="anonymous">
 
-<script src="https://kit.fontawesome.com/6e8b05f9c5.js" crossorigin="anonymous"></script>
-<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/6e8b05f9c5.js" integrity="sha384-IGs6kWGWpyznkNGm0WhYv8ijHmD5iX+tYxaQRV8BhcxWCfjbMIMRKbkrI7GY8n2V" crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" integrity="sha384-vLLEq/Un/eZFmXAu4Xxf8F00RSSMzPcI7iDiT6hpB4zFpezCEGhb5daeR8PLyrLI" crossorigin="anonymous"></script>
 
 <script src="assets/js/include/alerts.js"></script>
 <script src="assets/js/include/validation.js"></script>
@@ -24,9 +25,10 @@
 
 <script src="assets/js/include/main.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" integrity="sha384-c4va+H5QpEtz9vxARkshzuk7Nr/xvTpPs05Ai22ehEScV0gsEG2L58nJnPk8U9ke" crossorigin="anonymous"></script>
 
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" 
+    integrity="sha384-nLoOnA/BDh8A/jxqtckg4DumuCGOBYUnNJLZdQz/zfYNp3wcjGSoWTAzgko06G/2" crossorigin="anonymous"></script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
