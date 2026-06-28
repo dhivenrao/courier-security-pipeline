@@ -1,0 +1,3 @@
+ErrorDocument 403 /courier/error500.html
+ErrorDocument 404 /courier/error500.html
+ErrorDocument 500 /courier/error500.html
